@@ -28,7 +28,7 @@ let snake;
         }
 
         snake.checkCollision();
-    }, 250);
+    }, 130);
 }());
 
 function Snake() {
@@ -36,12 +36,12 @@ function Snake() {
     this.y = 0;
     this.xSpeed = scale * 1;
     this.ySpeed = 0;
-    this.total = 0;
+    this.total = 2;
     this.tail = [];
     this.score = 0;
 
     this.draw = function() {
-        ctx.fillStyle = "#50C877";
+        ctx.fillStyle = "#50C833";
 
         for (let i=0; i<this.tail.length; i++) {
             ctx.fillRect(this.tail[i].x, this.tail[i].y, scale, scale);
@@ -123,9 +123,27 @@ function Food() {
     this.y;
 
     this.pickLocation = function() {
-        this.x = (Math.floor(Math.random() * cols - 1) + 1) * scale;
-        this.y = (Math.floor(Math.random() * rows - 1) + 1) * scale;
+        let locationOccupied;  
+        do {
+            locationOccupied = false; 
+            this.x = (Math.floor(Math.random() * (cols - 1)) + 1) * scale;
+            this.y = (Math.floor(Math.random() * (rows - 1)) + 1) * scale;
+
+            // Controlla se il cibo si trova sulla posizione di una parte del serpente
+            snake.tail.forEach(part => {
+                if (part.x === this.x && part.y === this.y) {
+                    locationOccupied = true;
+                }
+            });
+            
+            // Controlla anche la posizione attuale della testa del serpente
+            if (snake.x === this.x && snake.y === this.y) {
+                locationOccupied = true;
+            }
+        } while (locationOccupied); // Ripeti finché la posizione non è libera
     };
+
+
 
     this.draw = function() {
         ctx.fillStyle = "#FF0000";
