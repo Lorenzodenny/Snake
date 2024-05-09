@@ -40,7 +40,7 @@ function Snake() {
     this.score = 0;
 
     this.draw = function() {
-        ctx.fillStyle = "#50C878";
+        ctx.fillStyle = "#50C877";
 
         for (let i=0; i<this.tail.length; i++) {
             ctx.fillRect(this.tail[i].x, this.tail[i].y, scale, scale);
@@ -63,7 +63,7 @@ function Snake() {
         if (this.x >= canvas.width) this.x = 0;
         if (this.y >= canvas.height) this.y = 0;
         if (this.x < 0) this.x = canvas.width - scale;
-        if (this.y < 0) this.y = canvas.height - scale;
+        if (this.y < 0) this.y = canvas.height - scale; 
     };
 
     this.changeDirection = function(direction) {
