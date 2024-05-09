@@ -1,7 +1,7 @@
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
-
-const scale = 20;  // Dimensione di ogni "blocco" del serpente e del cibo
+const scoreElement = document.getElementById('score');
+const scale = 20;  
 const rows = canvas.height / scale;
 const cols = canvas.width / scale;
 
@@ -21,6 +21,7 @@ let snake;
         food.draw();
         snake.update();
         snake.draw();
+        scoreElement.innerText = `Punteggio: ${snake.score}`;
 
         if (snake.eat(food)) {
             food.pickLocation();
@@ -136,3 +137,7 @@ window.addEventListener('keydown', (evt) => {
     const direction = evt.key.replace('Arrow', '');
     snake.changeDirection(direction);
 });
+
+function changeDirection(direction) {
+    snake.changeDirection(direction);
+}

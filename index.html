@@ -7,7 +7,18 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div id="score">Punteggio: 0</div>
     <canvas id="gameCanvas" width="400" height="400"></canvas>
+    <div id="controls">
+        <div class="button-row">
+            <button onclick="changeDirection('Up')"><img src="img/su.png" alt="Su"></button>
+        </div>
+        <div class="button-row">
+            <button onclick="changeDirection('Left')"><img src="img/sinistra.png" alt="Sinistra"></button>
+            <button onclick="changeDirection('Down')"><img src="img/giu.png" alt="Giù"></button>
+            <button onclick="changeDirection('Right')"><img src="img/destra.png" alt="Destra"></button>
+        </div>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
