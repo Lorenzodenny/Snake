@@ -60,7 +60,7 @@ function Snake() {
         this.x += this.xSpeed;
         this.y += this.ySpeed;
 
-        // Impedisce al serpente di uscire dai confini
+       
         if (this.x >= canvas.width) this.x = 0;
         if (this.y >= canvas.height) this.y = 0;
         if (this.x < 0) this.x = canvas.width - scale;
